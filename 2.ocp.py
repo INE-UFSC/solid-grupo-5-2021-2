@@ -4,23 +4,32 @@ Open-Closed Principle
 Classes devem estar fechadas para modificação, mas abertas para extensão
 """
 class Animal:
-    def __init__(self, name: str):
-        self.name = name
+    def __init__(self):
+        pass
     
     def get_name(self) -> str:
         pass
-
+    
     def make_sound(self):
-        if self.name == 'lion':
+        pass
+
+class Lion(Animal):
+    def __init__(self, name: str):
+        self.name = name
+    
+    def make_sound(self):
             print('roar')
-        elif self.name == 'mouse':
+
+class Mouse(Animal):
+    def __init__(self, name: str):
+        self.name = name
+    
+    def make_sound(self):
             print('squeak')
-        else:
-            print('...')
 
 animals = [
-    Animal('lion'),
-    Animal('mouse')
+    Lion('lion'),
+    Mouse('mouse')
 ]
 
 def animal_sound(animals: list):
@@ -43,9 +52,18 @@ class Discount:
         self.customer = customer
         self.price = price
 
-    def give_discount(self):
-            if self.customer == 'fav':
-                return self.price * 0.2
-            if self.customer == 'vip':
-                return self.price * 0.4
+class FavCustomer:
+    def __init__(self, customer, price):
+        self.customer = customer
+        self.price = price
 
+    def give_discount(self):
+        return self.price * 0.2
+
+class VIPCustomer:
+    def __init__(self, customer, price):
+        self.customer = customer
+        self.price = price
+
+    def give_discount(self):
+        return self.price * 0.4
