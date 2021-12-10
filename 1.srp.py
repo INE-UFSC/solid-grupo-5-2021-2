@@ -13,6 +13,10 @@ class Animal:
     def get_name(self) -> str:
         pass
 
+class Database:
+    def __init__(self):
+        pass
+    
     # salva no DB
     def save(self, animal: Animal):
         pass
